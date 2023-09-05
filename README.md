@@ -1,5 +1,5 @@
 # Dif-App-Cocina
-Dif+ App Cocina es una aplicación web hecha con Kotlin para los servicios de cocina dentro de un comedor comunitario. Es una extensión de la aplicación para comensales. Puede verla [aqui](https://www.github.com/Its-Yayo/Dif-App
+Dif+ App Cocina es una aplicación web hecha con Kotlin para los servicios de cocina dentro de un comedor comunitario. Es una extensión de la aplicación para comensales. Puede verla [aqui](https://www.github.com/Its-Yayo/Dif-App)
 
 ## Introducción
 Más detalles proximamente...
