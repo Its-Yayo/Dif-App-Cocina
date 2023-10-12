@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,44 +17,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val options = GmsBarcodeScannerOptions.Builder()
-            .setBarcodeFormats(
-                Barcode.FORMAT_QR_CODE
-            )
-            .enableAutoZoom()
-            .build()
-        val scanner = GmsBarcodeScanning.getClient(this)
-        scanner.startScan()
-            .addOnSuccessListener { barcode ->
-                // Tarea completada con éxito
-                val barcodeValue = barcode.rawValue.toString()
-                val textView = findViewById<TextView>(R.id.resultadoScaneo)
-                textView.text = "Barcode value: $barcodeValue"
-            }
-            .addOnCanceledListener {
-                // Tarea cancelada
-            }
-            .addOnFailureListener { e ->
-                // Tarea fallida con una excepción
-            }
-        // Botón para reiniciar la aplicación
-        val restartButton = findViewById<Button>(R.id.reinicio)
+        val btnIniciar = findViewById<Button>(R.id.iniciarApp)
 
-        // Función para reiniciar la aplicación
-        fun restartApp() {
-            // Termina la actividad actual
-            finish()
-
-            // Inicia la actividad nuevamente
-            startActivity(Intent(this, MainActivity::class.java))
+        btnIniciar.setOnClickListener{
+            val options = GmsBarcodeScannerOptions.Builder()
+                .setBarcodeFormats(
+                    Barcode.FORMAT_QR_CODE
+                )
+                .enableAutoZoom()
+                .build()
+            val scanner = GmsBarcodeScanning.getClient(this)
+            scanner.startScan()
+                .addOnSuccessListener { barcode ->
+                    // Tarea completada con éxito
+                    val barcodeValue = barcode.rawValue.toString()
+                    val intent = Intent(this, ReinicioActivity::class.java)
+                    intent.putExtra("barcodeValue", barcodeValue)
+                    startActivity(intent)
+                }
+                .addOnCanceledListener {
+                    // Tarea cancelada
+                }
+                .addOnFailureListener { e ->
+                    // Tarea fallida con una excepción
+                }
         }
-
-        // Escuchador de clic para el botón de reinicio
-        restartButton.setOnClickListener {
-            // Llama a la función para reiniciar la aplicación
-            restartApp()
-        }
-
     }
 }
 
