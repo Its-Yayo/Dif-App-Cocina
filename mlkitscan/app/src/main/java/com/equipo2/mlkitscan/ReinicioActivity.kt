@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
@@ -40,10 +41,10 @@ class ReinicioActivity : AppCompatActivity() {
                 }
             }
             .addOnCanceledListener {
-                // Tarea cancelada
+                startActivity(Intent(this, MainActivity::class.java))
             }
             .addOnFailureListener { e ->
-                // Tarea fallida con una excepción
+                Toast.makeText(this, "Error en el scaneo", Toast.LENGTH_SHORT).show()
             }
     }
 }
