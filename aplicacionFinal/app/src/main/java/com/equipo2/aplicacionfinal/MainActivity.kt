@@ -1,5 +1,6 @@
 package com.equipo2.aplicacionfinal
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -33,9 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         if (isValidUsuario(usuario, contrasena)) {
             Toast.makeText(this,"Iniciando...", Toast.LENGTH_LONG).show()
+            setContentView(R.layout.activity_menu_principal)
         }
         else{
-            Toast.makeText(this, "El formulario en incorrecto", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "El formulario es incorrecto", Toast.LENGTH_LONG).show()
         }
     }
 

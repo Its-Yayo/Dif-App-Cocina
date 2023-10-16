@@ -1,19 +1,21 @@
-package com.equipo2.menuprincipal
+package com.equipo2.aplicacionfinal
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
 
-class MainActivity : AppCompatActivity() {
+class MenuPrincipal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val clothingCard = findViewById<CardView>(R.id.clothingCard)
+        setContentView(R.layout.activity_menu_principal)
 
-        clothingCard.setOnClickListener {
+        val cardScanner = findViewById<CardView>(R.id.card_qr)
+
+        cardScanner.setOnClickListener{
             val intent = Intent(this, ActivityClothing::class.java)
             startActivity(intent)
         }
+
     }
 }

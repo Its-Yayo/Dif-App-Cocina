@@ -27,17 +27,31 @@ class ReinicioActivity : AppCompatActivity() {
             .addOnSuccessListener { barcode ->
                 // Tarea completada con éxito
                 val barcodeValue = barcode.rawValue.toString()
+                val isValidFormat = isValidBarcodeFormat(barcodeValue)
 
-                // Configura la vista después del escaneo
-                setContentView(R.layout.pantalla_de_reinicio)
+                if (isValidFormat) {
+                    // El código tiene el formato correcto
+                    // Configura la vista después del escaneo
+                    setContentView(R.layout.pantalla_de_reinicio)
 
-                val textView = findViewById<TextView>(R.id.textoCodigo)
-                textView.text = "Barcode value: $barcodeValue"
+                    val textView = findViewById<TextView>(R.id.textoCodigo)
+                    textView.text = "Barcode value: $barcodeValue"
 
-                val restartButton = findViewById<Button>(R.id.btnReiniciar)
-                restartButton.setOnClickListener {
-                    finish()
-                    startActivity(Intent(this, ReinicioActivity::class.java))
+                    val restartButton = findViewById<Button>(R.id.btnReiniciar)
+                    restartButton.setOnClickListener {
+                        finish()
+                        startActivity(Intent(this, ReinicioActivity::class.java))
+                    }
+                } else {
+                    // El código no tiene el formato correcto
+                    setContentView(R.layout.pantalla_de_reinicio)
+                    val textView = findViewById<TextView>(R.id.textoCodigo)
+                    textView.text = "QR incorrecto"
+                    val restartButton = findViewById<Button>(R.id.btnReiniciar)
+                    restartButton.setOnClickListener {
+                        finish()
+                        startActivity(Intent(this, ReinicioActivity::class.java))
+                    }
                 }
             }
             .addOnCanceledListener {
@@ -64,6 +78,30 @@ class ReinicioActivity : AppCompatActivity() {
                 println("Error al verificar módulo")
             }
 
+    }
+
+    private fun isValidBarcodeFormat(cadena: String): Boolean {
+        val partes = cadena.split("||")
+        if (partes.size != 2) {
+            return false
+        }
+        val curp = partes[0]
+        val resto = partes[1]
+        val campos = resto.split("|")
+        if (campos.size != 8) {
+            return false
+        }
+        val apellido1 = campos[0]
+        val apellido2 = campos[1]
+        val nombreCompleto = campos[2]
+        val sexo = campos[3]
+        val fechaNacimiento = campos[4]
+        val pais = campos[5]
+        val numero = campos[6]
+
+        // Aquí puedes agregar más validaciones para cada campo si es necesario
+
+        return true
     }
 
     private fun instalarModulo() {
