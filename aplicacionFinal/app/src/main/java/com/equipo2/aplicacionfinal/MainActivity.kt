@@ -2,20 +2,52 @@ package com.equipo2.aplicacionfinal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 
+
 class MainActivity : AppCompatActivity() {
+    //Las variables que se toman desde el activity_main LOGIN
+    var usuarioEditText: TextInputEditText? = null
+    var contrasenaEditText: TextInputEditText? = null
+    var btnIniciar: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Accede a los TextInputEditText usando sus IDs
-        val emailEditText: TextInputEditText = findViewById(R.id.usuario)
-        val contrasenaEditText: TextInputEditText = findViewById(R.id.Contrasena)
+        //Referencias al contenido ingresado
+        usuarioEditText = findViewById(R.id.usuario)
+        contrasenaEditText = findViewById(R.id.Contrasena)
+        btnIniciar = findViewById(R.id.btnLogin)
 
-        // Ahora puedes usar emailEditText y contrasenaEditText en tu código
-        // por ejemplo, para obtener el texto:
+        //accion del boton
+        btnIniciar?.setOnClickListener {login()}
 
-        val emailText = emailEditText.text.toString()
-        val contrasenaText = contrasenaEditText.text.toString()
+
     }
+
+    private fun login() {
+        //valores como inmutables
+        val usuario = usuarioEditText?.text.toString()
+        val contrasena = contrasenaEditText?.text.toString()
+
+        if (isValidUsuario(usuario, contrasena)) {
+            Toast.makeText(this,"Iniciando...", Toast.LENGTH_LONG).show()
+        }
+        else{
+            Toast.makeText(this, "El formulario en incorrecto", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun isValidUsuario(usuario: String, contrasena: String): Boolean {
+        if (usuario.isBlank()) {
+            return false
+        }
+        if (contrasena.isBlank()) {
+            return false
+        }
+        return true
+    }
+
 }
+

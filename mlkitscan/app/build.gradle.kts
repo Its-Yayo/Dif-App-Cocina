@@ -45,6 +45,7 @@ dependencies {
     //scanner
     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
     implementation ("com.google.android.gms:play-services-base:18.2.0")
+    implementation("com.google.android.gms:play-services-vision:20.1.3")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
