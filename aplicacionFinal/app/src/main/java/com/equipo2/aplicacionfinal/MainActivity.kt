@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         if (isValidUsuario(usuario, contrasena)) {
             Toast.makeText(this,"Iniciando...", Toast.LENGTH_LONG).show()
-            setContentView(R.layout.activity_menu_principal)
+            val intent = Intent(this, MenuPrincipal::class.java)
+            startActivity(intent)
         }
         else{
             Toast.makeText(this, "El formulario es incorrecto", Toast.LENGTH_LONG).show()
