@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         if (isValidUsuario(usuario, contrasena)) {
             Toast.makeText(this,"Iniciando...", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, MenuPrincipal::class.java)
+            val intent = Intent(this, ActivityMenuPrincipal::class.java)
             startActivity(intent)
         }
         else{

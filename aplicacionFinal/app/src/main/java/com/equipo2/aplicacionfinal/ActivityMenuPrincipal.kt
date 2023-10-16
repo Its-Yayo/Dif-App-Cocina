@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
 
-class MenuPrincipal : AppCompatActivity() {
+class ActivityMenuPrincipal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_principal)
@@ -13,7 +13,7 @@ class MenuPrincipal : AppCompatActivity() {
         val cardScanner = findViewById<CardView>(R.id.card_qr)
 
         cardScanner.setOnClickListener{
-            val intent = Intent(this, ActivityClothing::class.java)
+            val intent = Intent(this, ActivityScanner::class.java)
             startActivity(intent)
         }
 
