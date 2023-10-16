@@ -35,7 +35,7 @@ class ActivityScanner : AppCompatActivity() {
                     setContentView(R.layout.activity_scanner)
 
                     val textView = findViewById<TextView>(R.id.textoCodigo)
-                    textView.text = "Barcode value: $barcodeValue"
+                    textView.text = "Valores de scaneo: $barcodeValue"
 
                     val restartButton = findViewById<Button>(R.id.btnReiniciar)
                     restartButton.setOnClickListener {
@@ -55,7 +55,7 @@ class ActivityScanner : AppCompatActivity() {
                 }
             }
             .addOnCanceledListener {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, ActivityMenuPrincipal::class.java))
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error en el scaneo", Toast.LENGTH_SHORT).show()
