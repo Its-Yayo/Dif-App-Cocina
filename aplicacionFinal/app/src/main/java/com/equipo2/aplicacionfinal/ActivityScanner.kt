@@ -31,46 +31,38 @@ class ActivityScanner : AppCompatActivity() {
 
 
                 if (isValidFormat != null && isValidFormat.size >= 8) {
-                    val curp = isValidFormat[0]
-                    val apellido1 = isValidFormat[1]
-                    val apellido2 = isValidFormat[2]
-                    val nombreCompleto = isValidFormat[3]
-                    val sexo = isValidFormat[4]
-                    val fechaNacimiento = isValidFormat[5]
-                    val pais = isValidFormat[6]
-                    val numero = isValidFormat[7]
+                    val barcodeValue = barcode.rawValue.toString()
+                    val isValidFormat = isValidBarcodeFormat(barcodeValue)
 
-                    setContentView(R.layout.activity_scanner)
+                    if (isValidFormat != null && isValidFormat.size >= 8) {
+                        val curp = isValidFormat[0]
+                        val apellido1 = isValidFormat[1]
+                        val apellido2 = isValidFormat[2]
+                        val nombreCompleto = isValidFormat[3]
+                        val sexo = isValidFormat[4]
+                        val fechaNacimiento = isValidFormat[5]
+                        val pais = isValidFormat[6]
+                        val numero = isValidFormat[7]
 
-                    val textViewCurp = findViewById<TextView>(R.id.textViewCurp)
-                    val textViewApellido1 = findViewById<TextView>(R.id.textViewApellido1)
-                    val textViewApellido2 = findViewById<TextView>(R.id.textViewApellido2)
-                    val textViewNombreCompleto = findViewById<TextView>(R.id.textViewNombreCompleto)
-                    val textViewSexo = findViewById<TextView>(R.id.textViewSexo)
-                    val textViewFechaNacimiento = findViewById<TextView>(R.id.textViewFechaNacimiento)
-                    val textViewPais = findViewById<TextView>(R.id.textViewPais)
-                    val textViewNumero = findViewById<TextView>(R.id.textViewNumero)
-
-                    // Asignar valores a los TextViews
-                    textViewCurp.text = "CURP: $curp"
-                    textViewApellido1.text = "Apellido 1: $apellido1"
-                    textViewApellido2.text = "Apellido 2: $apellido2"
-                    textViewNombreCompleto.text = "Nombre Completo: $nombreCompleto"
-                    textViewSexo.text = "Sexo: $sexo"
-                    textViewFechaNacimiento.text = "Fecha de Nacimiento: $fechaNacimiento"
-                    textViewPais.text = "País: $pais"
-                    textViewNumero.text = "Número: $numero"
-
-                    val restartButton = findViewById<Button>(R.id.btnReiniciar)
-                    restartButton.setOnClickListener {
-                        finish()
-                        startActivity(Intent(this, ActivityScanner::class.java))
+                        val intent = Intent(this, ActivityScannerCorrecto::class.java).apply {
+                            putExtra("curp", curp)
+                            putExtra("apellido1", apellido1)
+                            putExtra("apellido2", apellido2)
+                            putExtra("nombreCompleto", nombreCompleto)
+                            putExtra("sexo", sexo)
+                            putExtra("fechaNacimiento", fechaNacimiento)
+                            putExtra("pais", pais)
+                            putExtra("numero", numero)
+                        }
+                        startActivity(intent)
                     }
+
+
                 } else {
                     // El código no tiene el formato correcto
                     setContentView(R.layout.activity_scanner)
                     val textView = findViewById<TextView>(R.id.textoCodigo)
-                    textView.text = "QR incorrecto"
+                    textView.text = "EL QR ESCANEADO NO ES VÁLIDO"
                     val restartButton = findViewById<Button>(R.id.btnReiniciar)
                     restartButton.setOnClickListener {
                         finish()
