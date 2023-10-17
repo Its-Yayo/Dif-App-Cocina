@@ -11,23 +11,120 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="180dp"
         android:text="aca_ira_el_texto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCurp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="186dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="186dp"
+        android:text="CURP:"
+        app:constraint_referenced_ids="textoCodigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoCodigo" />
+
+    <TextView
+        android:id="@+id/textViewApellido1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Apellido Paterno:"
+        app:constraint_referenced_ids="textViewCurp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCurp" />
+
+    <TextView
+        android:id="@+id/textViewApellido2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="173dp"
+        android:text="Apellido 2:"
+        app:constraint_referenced_ids="textViewApellido1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewApellido1" />
+
+    <TextView
+        android:id="@+id/textViewNombreCompleto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Nombre Completo:"
+        app:constraint_referenced_ids="textViewApellido2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewApellido2" />
+
+    <TextView
+        android:id="@+id/textViewSexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Sexo:"
+        app:constraint_referenced_ids="textViewNombreCompleto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNombreCompleto" />
+
+    <TextView
+        android:id="@+id/textViewFechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Fecha de Nacimiento:"
+        app:constraint_referenced_ids="textViewSexo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSexo" />
+
+    <TextView
+        android:id="@+id/textViewPais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="País:"
+        app:constraint_referenced_ids="textViewFechaNacimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFechaNacimiento" />
+
+    <TextView
+        android:id="@+id/textViewNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Número:"
+        app:constraint_referenced_ids="textViewPais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPais" />
+
 
     <Button
         android:id="@+id/btnReiniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="153dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="154dp"
         android:text="reiniciar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoCodigo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumero"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,13 +29,37 @@ class ActivityScanner : AppCompatActivity() {
                 val barcodeValue = barcode.rawValue.toString()
                 val isValidFormat = isValidBarcodeFormat(barcodeValue)
 
-                if (isValidFormat) {
-                    // El código tiene el formato correcto
-                    // Configura la vista después del escaneo
+
+                if (isValidFormat != null && isValidFormat.size >= 8) {
+                    val curp = isValidFormat[0]
+                    val apellido1 = isValidFormat[1]
+                    val apellido2 = isValidFormat[2]
+                    val nombreCompleto = isValidFormat[3]
+                    val sexo = isValidFormat[4]
+                    val fechaNacimiento = isValidFormat[5]
+                    val pais = isValidFormat[6]
+                    val numero = isValidFormat[7]
+
                     setContentView(R.layout.activity_scanner)
 
-                    val textView = findViewById<TextView>(R.id.textoCodigo)
-                    textView.text = "Valores de scaneo: $barcodeValue"
+                    val textViewCurp = findViewById<TextView>(R.id.textViewCurp)
+                    val textViewApellido1 = findViewById<TextView>(R.id.textViewApellido1)
+                    val textViewApellido2 = findViewById<TextView>(R.id.textViewApellido2)
+                    val textViewNombreCompleto = findViewById<TextView>(R.id.textViewNombreCompleto)
+                    val textViewSexo = findViewById<TextView>(R.id.textViewSexo)
+                    val textViewFechaNacimiento = findViewById<TextView>(R.id.textViewFechaNacimiento)
+                    val textViewPais = findViewById<TextView>(R.id.textViewPais)
+                    val textViewNumero = findViewById<TextView>(R.id.textViewNumero)
+
+                    // Asignar valores a los TextViews
+                    textViewCurp.text = "CURP: $curp"
+                    textViewApellido1.text = "Apellido 1: $apellido1"
+                    textViewApellido2.text = "Apellido 2: $apellido2"
+                    textViewNombreCompleto.text = "Nombre Completo: $nombreCompleto"
+                    textViewSexo.text = "Sexo: $sexo"
+                    textViewFechaNacimiento.text = "Fecha de Nacimiento: $fechaNacimiento"
+                    textViewPais.text = "País: $pais"
+                    textViewNumero.text = "Número: $numero"
 
                     val restartButton = findViewById<Button>(R.id.btnReiniciar)
                     restartButton.setOnClickListener {
@@ -80,17 +104,18 @@ class ActivityScanner : AppCompatActivity() {
 
     }
 
-    private fun isValidBarcodeFormat(cadena: String): Boolean {
+    private fun isValidBarcodeFormat(cadena: String): Array<String>? {
         val partes = cadena.split("||")
         if (partes.size != 2) {
-            return false
+            return null
         }
         val curp = partes[0]
         val resto = partes[1]
         val campos = resto.split("|")
         if (campos.size != 8) {
-            return false
+            return null
         }
+
         val apellido1 = campos[0]
         val apellido2 = campos[1]
         val nombreCompleto = campos[2]
@@ -99,10 +124,9 @@ class ActivityScanner : AppCompatActivity() {
         val pais = campos[5]
         val numero = campos[6]
 
-        // Aquí puedes agregar más validaciones para cada campo si es necesario
-
-        return true
+        return arrayOf(curp, apellido1, apellido2, nombreCompleto, sexo, fechaNacimiento, pais, numero)
     }
+
 
     private fun instalarModulo() {
         val moduleInstallClient = ModuleInstall.getClient(this)
@@ -118,7 +142,7 @@ class ActivityScanner : AppCompatActivity() {
             .addOnSuccessListener {
                 if (it.areModulesAlreadyInstalled()) {
                     // Modules are already installed when the request is sent.
-                    println("I N S T A L A D DO ......")
+                    println("I N S T A L A D O ......")
                 }
             }
             .addOnFailureListener {
