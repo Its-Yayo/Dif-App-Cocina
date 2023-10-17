@@ -20,9 +20,6 @@
             android:name=".ActivityScanner"
             android:exported="false" />
         <activity
-            android:name=".Scanner"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -34,9 +31,7 @@
         <activity
             android:name=".ActivityMenuPrincipal"
             android:exported="true" />
-        <activity
-            android:name=".ActivityClothing"
-            android:exported="true" />
+
     </application>
 
 </manifest>

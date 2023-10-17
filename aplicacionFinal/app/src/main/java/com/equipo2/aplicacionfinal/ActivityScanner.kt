@@ -74,7 +74,8 @@ class ActivityScanner : AppCompatActivity() {
                 startActivity(Intent(this, ActivityMenuPrincipal::class.java))
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error en el scaneo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al iniciar el scanner", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ActivityMenuPrincipal::class.java))
             }
 
 

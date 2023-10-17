@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     var btnIniciar: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         //Referencias al contenido ingresado
         usuarioEditText = findViewById(R.id.usuario)

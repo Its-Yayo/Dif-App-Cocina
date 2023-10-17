@@ -106,14 +106,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_vertical">
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:text="DONACIÓN:"
             android:textSize="15dp"
-            android:text="DONACIÓN:" />
+            android:textStyle="bold" />
 
         <Switch
             android:id="@+id/donacion"
@@ -123,6 +124,28 @@
             android:checked="false"
             android:thumbTint="@color/verde"/>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONDICIÓN:"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner_condicion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
 
     </LinearLayout>
 

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">aplicacionFinal</string>
+    <string-array name="opciones_array">
+        <item>Discapacidad Visual</item>
+        <item>Discapacidad Fisica</item>
+        <item>Embarazo</item>
+        <item>Postración</item>
+    </string-array>
 </resources>
