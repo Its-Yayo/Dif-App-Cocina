@@ -55,6 +55,7 @@ class ActivityScanner : AppCompatActivity() {
                             putExtra("numero", numero)
                         }
                         startActivity(intent)
+                        finish()
                     }
 
 
@@ -65,8 +66,9 @@ class ActivityScanner : AppCompatActivity() {
                     textView.text = "EL QR ESCANEADO NO ES VÁLIDO"
                     val restartButton = findViewById<Button>(R.id.btnReiniciar)
                     restartButton.setOnClickListener {
-                        finish()
                         startActivity(Intent(this, ActivityScanner::class.java))
+                        finish()
+
                     }
                 }
             }

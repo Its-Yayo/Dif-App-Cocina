@@ -22,7 +22,7 @@
         <activity
             android:name=".ActivityScannerAyudantes"
             android:exported="false"
-            android:label="@string/title_activity_scanner_ayudantes"
+
             android:theme="@style/Theme.AplicacionFinal" />
         <activity
             android:name=".ActivityScannerCorrecto"

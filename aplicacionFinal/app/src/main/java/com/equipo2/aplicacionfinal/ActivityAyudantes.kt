@@ -44,7 +44,7 @@ class ActivityAyudantes : AppCompatActivity() {
         textViewNombreCompleto.text = "Nombre Completo: $nombreCompleto"
         textViewSexo.text = "Sexo: $sexo"
         textViewFechaNacimiento.text = "Fecha de Nacimiento: $fechaNacimiento"
-        textViewPais.text = "País: $pais"
+        textViewPais.text = "Estado: $pais"
         textViewNumero.text = "Número: $numero"
 
         var donativo = 1
@@ -69,6 +69,8 @@ class ActivityAyudantes : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
             finish()
             startActivity(Intent(this, ActivityScannerAyudantes::class.java))
+
+            finish()
         }
         menuButton.setOnClickListener{
             Log.d("ActivityScannerCorrecto", "Datos recibidos:")
@@ -84,6 +86,8 @@ class ActivityAyudantes : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
             finish()
             startActivity(Intent(this, ActivityMenuPrincipal::class.java))
+
+            finish()
         }
     }
 }

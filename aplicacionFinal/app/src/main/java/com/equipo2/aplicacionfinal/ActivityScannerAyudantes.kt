@@ -57,6 +57,7 @@ class ActivityScannerAyudantes : AppCompatActivity() {
                             putExtra("numero", numero)
                         }
                         startActivity(intent)
+                        finish()
                     }
 
 
@@ -69,6 +70,7 @@ class ActivityScannerAyudantes : AppCompatActivity() {
                     restartButton.setOnClickListener {
                         finish()
                         startActivity(Intent(this, ActivityScannerAyudantes::class.java))
+
                     }
                 }
             }

@@ -12,6 +12,7 @@ class ActivityMenuPrincipal : AppCompatActivity() {
 
         val cardScanner = findViewById<CardView>(R.id.card_qr)
         val cardScannerAyudantes = findViewById<CardView>(R.id.card_qrayudantes)
+        val cardReportes = findViewById<CardView>(R.id.card_reportar)
 
         cardScanner.setOnClickListener{
             val intent = Intent(this, ActivityScanner::class.java)
@@ -19,6 +20,10 @@ class ActivityMenuPrincipal : AppCompatActivity() {
         }
         cardScannerAyudantes.setOnClickListener(){
             val intent = Intent(this, ActivityScannerAyudantes::class.java)
+            startActivity(intent)
+        }
+        cardReportes.setOnClickListener{
+            val intent = Intent(this, ActivityReport::class.java)
             startActivity(intent)
         }
 

@@ -45,7 +45,7 @@ class ActivityScannerCorrecto : AppCompatActivity() {
         textViewNombreCompleto.text = "Nombre Completo: $nombreCompleto"
         textViewSexo.text = "Sexo: $sexo"
         textViewFechaNacimiento.text = "Fecha de Nacimiento: $fechaNacimiento"
-        textViewPais.text = "País: $pais"
+        textViewPais.text = "Estado: $pais"
         textViewNumero.text = "Número: $numero"
 
 
