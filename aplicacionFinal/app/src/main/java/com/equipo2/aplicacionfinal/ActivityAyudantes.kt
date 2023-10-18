@@ -51,8 +51,10 @@ class ActivityAyudantes : AppCompatActivity() {
 
         var valorSeleccionado = "Ninguna"
 
-
+        val menuButton = findViewById<Button>(R.id.btn_menu)
         val restartButton = findViewById<Button>(R.id.btnReiniciar)
+
+
         restartButton.setOnClickListener {
             Log.d("ActivityScannerCorrecto", "Datos recibidos:")
             Log.d("ActivityScannerCorrecto", "CURP: $curp")
@@ -67,6 +69,21 @@ class ActivityAyudantes : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
             finish()
             startActivity(Intent(this, ActivityScannerAyudantes::class.java))
+        }
+        menuButton.setOnClickListener{
+            Log.d("ActivityScannerCorrecto", "Datos recibidos:")
+            Log.d("ActivityScannerCorrecto", "CURP: $curp")
+            Log.d("ActivityScannerCorrecto", "Apellido1: $apellido1")
+            Log.d("ActivityScannerCorrecto", "Apellido2: $apellido2")
+            Log.d("ActivityScannerCorrecto", "NombreCompleto: $nombreCompleto")
+            Log.d("ActivityScannerCorrecto", "Sexo: $sexo")
+            Log.d("ActivityScannerCorrecto", "FechaNacimiento: $fechaNacimiento")
+            Log.d("ActivityScannerCorrecto", "Estado: $pais")
+            Log.d("ActivityScannerCorrecto", "Numero: $numero")
+            Log.d("ActivityScannerCorrecto", "Spinner: $valorSeleccionado")
+            Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
+            finish()
+            startActivity(Intent(this, ActivityMenuPrincipal::class.java))
         }
     }
 }

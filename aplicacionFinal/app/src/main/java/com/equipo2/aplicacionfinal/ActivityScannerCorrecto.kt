@@ -1,5 +1,6 @@
 package com.equipo2.aplicacionfinal
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -14,6 +15,7 @@ import android.widget.AdapterView
 
 
 class ActivityScannerCorrecto : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner_correcto)
@@ -95,7 +97,7 @@ class ActivityScannerCorrecto : AppCompatActivity() {
             }
         }
 
-
+        val volverMenu = findViewById<Button>(R.id.btn_menu)
         val restartButton = findViewById<Button>(R.id.btnReiniciar)
         restartButton.setOnClickListener {
             Log.d("ActivityScannerCorrecto", "Datos recibidos:")
@@ -111,6 +113,21 @@ class ActivityScannerCorrecto : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
             finish()
             startActivity(Intent(this, ActivityScanner::class.java))
+        }
+        volverMenu.setOnClickListener{
+            Log.d("ActivityScannerCorrecto", "Datos recibidos:")
+            Log.d("ActivityScannerCorrecto", "CURP: $curp")
+            Log.d("ActivityScannerCorrecto", "Apellido1: $apellido1")
+            Log.d("ActivityScannerCorrecto", "Apellido2: $apellido2")
+            Log.d("ActivityScannerCorrecto", "NombreCompleto: $nombreCompleto")
+            Log.d("ActivityScannerCorrecto", "Sexo: $sexo")
+            Log.d("ActivityScannerCorrecto", "FechaNacimiento: $fechaNacimiento")
+            Log.d("ActivityScannerCorrecto", "Estado: $pais")
+            Log.d("ActivityScannerCorrecto", "Numero: $numero")
+            Log.d("ActivityScannerCorrecto", "Spinner: $valorSeleccionado")
+            Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
+            finish()
+            startActivity(Intent(this, ActivityMenuPrincipal::class.java))
         }
     }
 }
