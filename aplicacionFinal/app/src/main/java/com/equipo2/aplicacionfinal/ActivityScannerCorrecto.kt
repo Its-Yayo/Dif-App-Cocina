@@ -2,13 +2,14 @@ package com.equipo2.aplicacionfinal
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
+
 
 class ActivityScannerCorrecto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,21 +46,20 @@ class ActivityScannerCorrecto : AppCompatActivity() {
 
 
         val switchDonacion = findViewById<Switch>(R.id.donacion)
-        var donativo = ""
+        var donativo = 0 // Por defecto, asumiremos que el switch está desactivado
 
         switchDonacion.setOnCheckedChangeListener { _, isChecked ->
             donativo = if (isChecked) {
-                "donada"
+                1
             } else {
-                "cobrada"
+                0
             }
-            Log.d("SwitchDonacion", "Estado del Switch: $isChecked")
-
         }
-        val spinner = findViewById<Spinner>(R.id.spinner_condicion)
+
+        var valorSpinner = findViewById<Spinner>(R.id.spinner_condicion)
 
         // Crear un ArrayAdapter usando un array de strings y un layout predefinido
-        val adapter = ArrayAdapter.createFromResource(
+        var adapter = ArrayAdapter.createFromResource(
             this,
             R.array.opciones_array, // R.array.opciones_array es un array de strings en tu archivo de recursos
             android.R.layout.simple_spinner_item
@@ -69,12 +69,31 @@ class ActivityScannerCorrecto : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Asignar el ArrayAdapter al Spinner
-        spinner.adapter = adapter
+        valorSpinner.adapter = adapter
+
+        // Obtener el valor seleccionado del Spinner
+        var valorSeleccionado = valorSpinner.selectedItem.toString()
+
 
         val restartButton = findViewById<Button>(R.id.btnReiniciar)
         restartButton.setOnClickListener {
             finish()
             startActivity(Intent(this, ActivityScanner::class.java))
+        }
+        val btnMostrarDatos = findViewById<Button>(R.id.btnMostrarDatos)
+
+        btnMostrarDatos.setOnClickListener {
+            Log.d("ActivityScannerCorrecto", "Datos recibidos:")
+            Log.d("ActivityScannerCorrecto", "CURP: $curp")
+            Log.d("ActivityScannerCorrecto", "Apellido1: $apellido1")
+            Log.d("ActivityScannerCorrecto", "Apellido2: $apellido2")
+            Log.d("ActivityScannerCorrecto", "NombreCompleto: $nombreCompleto")
+            Log.d("ActivityScannerCorrecto", "Sexo: $sexo")
+            Log.d("ActivityScannerCorrecto", "FechaNacimiento: $fechaNacimiento")
+            Log.d("ActivityScannerCorrecto", "Pais: $pais")
+            Log.d("ActivityScannerCorrecto", "Numero: $numero")
+            Log.d("ActivityScannerCorrecto", "Spinner: $valorSeleccionado")
+            Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
         }
 
 
