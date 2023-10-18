@@ -218,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:id="@+id/card_registros"
+                android:id="@+id/card_logout"
                 android:backgroundTint="@color/verde"
                 app:cardCornerRadius="20dp">
                 <RelativeLayout
