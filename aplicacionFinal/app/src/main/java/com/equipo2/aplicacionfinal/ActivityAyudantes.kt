@@ -1,22 +1,23 @@
 package com.equipo2.aplicacionfinal
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Switch
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 
-
-class ActivityScannerCorrecto : AppCompatActivity() {
+class ActivityAyudantes : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanner_correcto)
+        setContentView(R.layout.activity_ayudantes)
 
         val curp = intent.getStringExtra("curp")
         val apellido1 = intent.getStringExtra("apellido1")
@@ -46,54 +47,9 @@ class ActivityScannerCorrecto : AppCompatActivity() {
         textViewPais.text = "País: $pais"
         textViewNumero.text = "Número: $numero"
 
+        var donativo = 1
 
-        val switchDonacion = findViewById<Switch>(R.id.donacion)
-        var donativo = 0 // Por defecto, asumiremos que el switch está desactivado
-
-        switchDonacion.setOnCheckedChangeListener { _, isChecked ->
-            donativo = if (isChecked) {
-                1
-            } else {
-                0
-            }
-        }
-
-        var valorSpinner = findViewById<Spinner>(R.id.spinner_condicion)
-
-        // Crear un ArrayAdapter usando un array de strings y un layout predefinido
-        var adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.opciones_array, // R.array.opciones_array es un array de strings en tu archivo de recursos
-            android.R.layout.simple_spinner_item
-        )
-
-        // Especificar el layout que se usará cuando se despliegue el Spinner
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Asignar el ArrayAdapter al Spinner
-        valorSpinner.adapter = adapter
-
-        // Declarar la variable fuera del listener
-        var valorSeleccionado = ""
-
-        // Agregar un listener al Spinner para manejar los cambios de selección
-        valorSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                // Actualizar el valor de la variable con el valor seleccionado
-                valorSeleccionado = parent.getItemAtPosition(position).toString()
-                // Aquí puedes ver el valor seleccionado
-                println("Valor seleccionado: $valorSeleccionado")
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
+        var valorSeleccionado = "Ninguna"
 
 
         val restartButton = findViewById<Button>(R.id.btnReiniciar)
@@ -110,7 +66,7 @@ class ActivityScannerCorrecto : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "Spinner: $valorSeleccionado")
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
             finish()
-            startActivity(Intent(this, ActivityScanner::class.java))
+            startActivity(Intent(this, ActivityScannerAyudantes::class.java))
         }
     }
 }
