@@ -14,6 +14,9 @@
         android:theme="@style/Theme.AplicacionFinal"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityReport"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAyudantes"
             android:exported="false" />
         <activity
