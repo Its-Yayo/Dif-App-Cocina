@@ -9,6 +9,8 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 
 
 class ActivityScannerCorrecto : AppCompatActivity() {
@@ -71,18 +73,31 @@ class ActivityScannerCorrecto : AppCompatActivity() {
         // Asignar el ArrayAdapter al Spinner
         valorSpinner.adapter = adapter
 
-        // Obtener el valor seleccionado del Spinner
-        var valorSeleccionado = valorSpinner.selectedItem.toString()
+        // Declarar la variable fuera del listener
+        var valorSeleccionado = ""
+
+        // Agregar un listener al Spinner para manejar los cambios de selección
+        valorSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                // Actualizar el valor de la variable con el valor seleccionado
+                valorSeleccionado = parent.getItemAtPosition(position).toString()
+                // Aquí puedes ver el valor seleccionado
+                println("Valor seleccionado: $valorSeleccionado")
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
 
 
         val restartButton = findViewById<Button>(R.id.btnReiniciar)
         restartButton.setOnClickListener {
-            finish()
-            startActivity(Intent(this, ActivityScanner::class.java))
-        }
-        val btnMostrarDatos = findViewById<Button>(R.id.btnMostrarDatos)
-
-        btnMostrarDatos.setOnClickListener {
             Log.d("ActivityScannerCorrecto", "Datos recibidos:")
             Log.d("ActivityScannerCorrecto", "CURP: $curp")
             Log.d("ActivityScannerCorrecto", "Apellido1: $apellido1")
@@ -90,12 +105,16 @@ class ActivityScannerCorrecto : AppCompatActivity() {
             Log.d("ActivityScannerCorrecto", "NombreCompleto: $nombreCompleto")
             Log.d("ActivityScannerCorrecto", "Sexo: $sexo")
             Log.d("ActivityScannerCorrecto", "FechaNacimiento: $fechaNacimiento")
-            Log.d("ActivityScannerCorrecto", "Pais: $pais")
+            Log.d("ActivityScannerCorrecto", "Estado: $pais")
             Log.d("ActivityScannerCorrecto", "Numero: $numero")
             Log.d("ActivityScannerCorrecto", "Spinner: $valorSeleccionado")
             Log.d("ActivityScannerCorrecto", "Donativo: $donativo")
+            finish()
+            startActivity(Intent(this, ActivityScanner::class.java))
         }
+        val btnMostrarDatos = findViewById<Button>(R.id.btnMostrarDatos)
 
-
+        btnMostrarDatos.setOnClickListener {
+        }
     }
 }
